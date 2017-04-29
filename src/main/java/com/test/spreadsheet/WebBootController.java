@@ -126,8 +126,8 @@ public class WebBootController {
                 	 
                 	 //data = data.replaceAll(" ", ",").replaceAll("\\$\\$", "").replaceAll(";", "<br/>");
                 	 
-                	 data = data.replaceAll(";", "&nbsp;");
-                	 
+                	 data = data.replaceAll(";", "<br>");
+                	 data = data.replaceAll("\\$\\$", "\\$");
                 	 
                 	 modelData += "<td>"+data+"</td>";
                 	 /*
