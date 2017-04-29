@@ -107,8 +107,9 @@ public class WebBootController {
 
          iterator.next();
          int i = 1;
+         
          while (iterator.hasNext()) {
-
+        	 
         	 modelData += "<tr><th>"+(i++)+"</th>";
         	 
              Row currentRow = iterator.next();
@@ -121,15 +122,29 @@ public class WebBootController {
                  //getCellTypeEnum ill be renamed to getCellType starting from version 4.0
                  if (currentCell.getCellTypeEnum() == CellType.STRING) {
                 	 
-                	 String data = 	currentCell.getRichStringCellValue().getString().trim().replaceAll(" ", ",");//.replaceAll("$$", "");
+                	 String data = 	currentCell.getRichStringCellValue().getString().trim();//.replaceAll(" ", ",");//.replaceAll("$$", "");
+                	 
+                	 //data = data.replaceAll(" ", ",").replaceAll("\\$\\$", "").replaceAll(";", "<br/>");
+                	 
+                	 data = data.replaceAll(";", "");
+                	 
+                	 
+                	 modelData += "<td>"+data+"</td>";
+                	 /*
+                	 if(data.contains("$$")){
+                		 modelData += "<td>\\[\\table"+data+"\\]</td>";
+                	 }else{
+                		 
+                	 }*/
+                	 
                 	 
                 	 System.out.println(">>"+data);
                 	 
-                	 modelData += "<td>\\[\\table"+data+"\\]</td>";
+                	 
                      System.out.print(currentCell.getRichStringCellValue().getString() + "--");
                  } else if (currentCell.getCellTypeEnum() == CellType.NUMERIC) {
                 	 //String data = 	currentCell.getRichStringCellValue().getString().trim().replace(" ", "&nbsp;");
-                	 modelData += "<td>\\[\\table"+currentCell.getNumericCellValue()+"\\]</td>";
+                	 modelData += "<td>"+currentCell.getNumericCellValue()+"</td>";
                 	 System.out.print(currentCell.getNumericCellValue() + "--");
                  }
 
