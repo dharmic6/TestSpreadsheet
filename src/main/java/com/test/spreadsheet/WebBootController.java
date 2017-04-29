@@ -118,9 +118,21 @@ public class WebBootController {
              while (cellIterator.hasNext()) {
 
                  Cell currentCell = cellIterator.next();
+                 
+                 currentCell.setCellType(CellType.STRING);
+                 
+                 String data = 	currentCell.getRichStringCellValue().getString().trim();//.replaceAll(" ", ",");//.replaceAll("$$", "");
+            	 
+            	 //data = data.replaceAll(" ", ",").replaceAll("\\$\\$", "").replaceAll(";", "<br/>");
+            	 
+            	 data = data.replaceAll(";", "<br>");
+            	 data = data.replaceAll("\\$\\$", "\\$");
+            	 
+            	 modelData += "<td>"+data+"</td>";
+                 
                  //getCellTypeEnum shown as deprecated for version 3.15
                  //getCellTypeEnum ill be renamed to getCellType starting from version 4.0
-                 if (currentCell.getCellTypeEnum() == CellType.STRING) {
+                 /*if (currentCell.getCellTypeEnum() == CellType.STRING) {
                 	 
                 	 String data = 	currentCell.getRichStringCellValue().getString().trim();//.replaceAll(" ", ",");//.replaceAll("$$", "");
                 	 
@@ -130,12 +142,12 @@ public class WebBootController {
                 	 data = data.replaceAll("\\$\\$", "\\$");
                 	 
                 	 modelData += "<td>"+data+"</td>";
-                	 /*
+                	 
                 	 if(data.contains("$$")){
                 		 modelData += "<td>\\[\\table"+data+"\\]</td>";
                 	 }else{
                 		 
-                	 }*/
+                	 }
                 	 
                 	 
                 	 System.out.println(">>"+data);
@@ -147,7 +159,7 @@ public class WebBootController {
                 	 modelData += "<td>"+currentCell.getNumericCellValue()+"</td>";
                 	 System.out.print(currentCell.getNumericCellValue() + "--");
                  }
-
+*/
              }
              System.out.println();
              modelData += "</tr>";
