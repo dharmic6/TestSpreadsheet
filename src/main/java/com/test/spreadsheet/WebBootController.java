@@ -128,7 +128,7 @@ public class WebBootController {
             	 data = data.replaceAll(";", "<br>");
             	 data = data.replaceAll("\\$\\$", "\\$");
             	 
-            	 if(data.indexOf("##image##") > 0) {
+            	 if(data.indexOf("##image##")  != -1) {
             		 data = data.replace("##image##", "<img src=\"https://firebasestorage.googleapis.com/v0/b/testmsgnew.appspot.com/o");
             		 data = data.replace(".jpg", ".jpg?alt=media\">");
             		 data = data.replace("/#/", "%2F");
