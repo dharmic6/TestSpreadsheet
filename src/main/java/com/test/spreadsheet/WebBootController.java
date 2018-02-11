@@ -107,8 +107,9 @@ public class WebBootController {
 
          iterator.next();
          int i = 1;
-         
+         //int j = 10;
          while (iterator.hasNext()) {
+        	 
         	 
         	 modelData += "<tr><th>"+(i++)+"</th>";
         	 
@@ -125,11 +126,16 @@ public class WebBootController {
             	 
             	 //data = data.replaceAll(" ", ",").replaceAll("\\$\\$", "").replaceAll(";", "<br/>");
             	 
+                 
             	 data = data.replaceAll(";", "<br>");
+            	 
+            	 data = data.replaceAll("!@#", ";");
+            	 
+            	 
             	 data = data.replaceAll("\\$\\$", "\\$");
             	 
             	 if(data.indexOf("##image##")  != -1) {
-            		 data = data.replace("##image##", "<img src=\"https://firebasestorage.googleapis.com/v0/b/testmsgnew.appspot.com/o");
+            		 data = data.replace("##image##", "##image##<img src=\"https://firebasestorage.googleapis.com/v0/b/testmsgnew.appspot.com/o");
             		 data = data.replace(".jpg", ".jpg?alt=media\">");
             		 data = data.replace("/#/", "%2F");
             	 }
@@ -167,7 +173,7 @@ public class WebBootController {
                  }
 */
              }
-             System.out.println();
+             System.out.println(i);
              modelData += "</tr>";
 
          }
