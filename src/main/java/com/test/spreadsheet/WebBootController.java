@@ -95,6 +95,20 @@ public class WebBootController {
     }
 	
 	
+	@RequestMapping(value = "/textupload", method = RequestMethod.POST)
+	public String textUpload(@RequestParam("text") String text,
+                                   RedirectAttributes redirectAttributes, HttpServletRequest request, Map<String, Object> model) {
+
+		
+		model.put("message", getData(text));
+		
+		
+		return "welcome";
+	}
+	
+	
+	
+	
 	
 	public String getData(File file){
 	 try {
@@ -189,5 +203,60 @@ public class WebBootController {
 	 return null;
 	}
 	
+	
+	
+	public String getData(String data){
+		
+			    	 data = data.replaceAll(";", "<br>");
+	            	 
+	            	 data = data.replaceAll("!@#", ";");
+	            	 
+	            	 
+	            	 data = data.replaceAll("\\$\\$", "\\$");
+	            	 
+	            	 if(data.indexOf("##image##")  != -1) {
+	            		 data = data.replace("##image##", "##image##<img src=\"https://firebasestorage.googleapis.com/v0/b/testmsgnew.appspot.com/o");
+	            		 data = data.replace(".jpg", ".jpg?alt=media\">");
+	            		 data = data.replace("/#/", "%2F");
+	            	 }
+	            	 
+	            	 
+	                 //getCellTypeEnum shown as deprecated for version 3.15
+	                 //getCellTypeEnum ill be renamed to getCellType starting from version 4.0
+	                 /*if (currentCell.getCellTypeEnum() == CellType.STRING) {
+	                	 
+	                	 String data = 	currentCell.getRichStringCellValue().getString().trim();//.replaceAll(" ", ",");//.replaceAll("$$", "");
+	                	 
+	                	 //data = data.replaceAll(" ", ",").replaceAll("\\$\\$", "").replaceAll(";", "<br/>");
+	                	 
+	                	 data = data.replaceAll(";", "<br>");
+	                	 data = data.replaceAll("\\$\\$", "\\$");
+	                	 
+	                	 modelData += "<td>"+data+"</td>";
+	                	 
+	                	 if(data.contains("$$")){
+	                		 modelData += "<td>\\[\\table"+data+"\\]</td>";
+	                	 }else{
+	                		 
+	                	 }
+	                	 
+	                	 
+	                	 System.out.println(">>"+data);
+	                	 
+	                	 
+	                     System.out.print(currentCell.getRichStringCellValue().getString() + "--");
+	                 } else if (currentCell.getCellTypeEnum() == CellType.NUMERIC) {
+	                	 //String data = 	currentCell.getRichStringCellValue().getString().trim().replace(" ", "&nbsp;");
+	                	 modelData += "<td>"+currentCell.getNumericCellValue()+"</td>";
+	                	 System.out.print(currentCell.getNumericCellValue() + "--");
+	                 }
+	*/
+	             //}
+	            
+	         
+	         return data;
+	         
+	     
+		}
 
 }

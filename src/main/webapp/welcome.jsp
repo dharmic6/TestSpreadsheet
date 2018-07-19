@@ -16,6 +16,17 @@ Upload File : <form action="fileupload" method="post" enctype="multipart/form-da
 <br />
 <input type="submit" value="Upload File" />
 </form>
+
+Text Upload.
+<form action="textupload" method="post">
+<textarea rows="100" cols="100" name="text">
+Enter Text Here..
+</textarea>
+<input type="submit" value="Submit Text" />
+</form>
+
+${message}
+
 </body>
 
 </html>
